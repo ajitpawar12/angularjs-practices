@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Directives";
+}
+<h1>AngularJS</h1>
+<hr />
+<h3>Directives</h3>
+<hr />
+<div class="container">
+    <div class="row">
+        <div ng-app>
+            <div class="col-md-12">
+                <h3>ng-app</h3>
+                <p>
+                    The ng-app directive initializes AngularJS and makes the specified element a root element of the application. Visit ng-app section for more information.
+                </p>
+            </div>
+            <hr />
+            <div class="col-md-12">
+                <h3>ng-init</h3>
+                <p>
+                    The ng-init directive can be used to initialize variables in AngularJS application.
+                </p>
+                <h4>Example</h4>
+                <div ng-init="word='Hello World'; value1='10';value2='20';testarray=[100,200];person={firstname:'Ajit',lastname:'Pawar'}">
+                    <label>Value1 :{{value1}}</label><br />
+                    <label>Value2 :{{value2}}</label><br />
+                    <label>testarray[1] :{{testarray[1]}}</label><br />
+                    <label>person.firstname :{{person.firstname}}</label><br />
+                </div>
+            </div>
+            <hr />
+            <div class="col-md-12">
+                <h3>ng-model</h3>
+                <p>
+                    The ng-model directive is used for two-way data binding in AngularJS
+                </p>
+                <div>
+                    <label>Enter the name for bind to hello :</label><input type="text" ng-model="nameforbind" /><br />
+
+                    <label>Hello {{nameforbind}}</label>
+                </div>
+            </div>
+            <hr />
+
+            <div class="col-md-12">
+                <h3>ng-bind</h3>
+                <p>
+                    The ng-bind directive binds the model property declared via $scope or ng-model directive or the result of an expression to the HTML element.
+                </p>
+                <div>
+                    <label>5+5 = <span ng-bind="5+5"></span></label><br />
+
+                    <label> Enter your Name for bind :</label><input type="text" ng-model="name" /><br />
+                    <label>Hello : <span ng-bind="name"></span></label>
+                </div>
+            </div>
+            <hr />
+            <div class="col-md-12">
+                <h3>ng-repeat</h3>
+                <p>
+                    The ng-repeat directive repeats HTML once per each item in the specified array collection.
+                </p>
+                <div ng-init="students=['Ajit','Sujit','Swapnil']">
+                    <ol>
+                        <li ng-repeat="name in students">
+                            {{name}}
+                        </li>
+                    </ol><br/>
+
+                    <div ng-repeat="name in students" style="border: 1px solid green;width: 100%;height: 50px;display: block;margin-bottom: 10px;text-align:center;background-color:yellow;">
+                        {{name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="col-md-12">
+            <h3>ng-if</h3>
+            <p>
+                The ng-if directive creates or removes an HTML element based on the Boolean value returned from the specified expression. If an expression returns true then it recreates an element otherwise removes an element from the HTML document.
+            </p>
+            <div ng-init="checked=true">
+                <label> Click me :</label><input type="checkbox" ng-model="checked"/><br/>
+                <label>New :</label><input ng-if="checked" type="text"/>
+            </div>
+        </div>
+        <hr />
+        </div>
+</div>
+

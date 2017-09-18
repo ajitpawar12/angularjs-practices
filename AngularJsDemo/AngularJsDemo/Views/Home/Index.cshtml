@@ -4,20 +4,30 @@
 
 <h1>AngularJS Start</h1>
 <hr />
+<div ng-app>
+    <!-- First Example-->
+    <div class="col-md-12">
+        <h3 class="exampleheading">First Example</h3>
+        Enter Your Name:<input type="text" ng-model="name" /><br />
+        Hello <label ng-bind="name"></label>
+    </div>
+    <hr />
+    <!-- Second Example-->
+    <div class="col-md-12">
+        <h3 class="exampleheading">Second Example</h3>
+        Enter Number to multiply:<br />
+        <input type="text" ng-model="Num1" /><br />X<br />
+        <input type="text" ng-model="Num2" /><br />= <span> {{Num1 * Num2}}</span>
+    </div>
+    <hr />
+    <!-- Third Example-->
+    <div class="col-md-12">
+        <h3 class="exampleheading">Third Example:use of init directive</h3>
+        <div ng-init="title='Hello World'; amount= 1000; rateOfInterest= 10.5; duration= 10; myArr = [100, 200]; emplyoee = { firstname:'Ajit',lastname:'Pawar'}">
+            {{ (amount * rateOfInterest * duration)/100}}<br/>
+            {{myArr[1]}}<br/>
+            {{emplyoee.firstname +" "+ emplyoee.lastname}}
+        </div>
+    </div>
 
-<!-- First Example-->
-<div class="col-md-12">
-    <h2>First Example</h2>
-    Enter Your Name:<input type="text" ng-model="name" /><br />
-    Hello <label ng-bind="name"></label>
 </div>
-<hr />
-<!-- Second Example-->
-<div class="col-md-12">
-    <h2>Second Example</h2>
-    Enter Number to multiply:<br />
-    <input type="text" ng-model="Num1" /><br />X<br />
-    <input type="text" ng-model="Num2" /><br />= <span> {{Num1 * Num2}}</span>
-</div>
-<hr />
-
