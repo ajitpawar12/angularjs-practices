@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Controller";
+}
+
+<h2>Controller Examples</h2>
+
+<div class="container">
+    <div class="row" ng-app="myNgApp">
+        <div class="col-md-12">
+            <h3>
+                ng-controller
+            </h3>
+            <p>
+                demonstrates attaching properties to the $scope object inside a controller and then displaying property value in HTML. 
+            </p>
+            <label>Example</label>
+            <div id="div1" ng-controller="myController">
+                {{message}}
+                <hr/>
+                <div class="col-md-12">
+                    <h3>
+                        Attach Behaviors
+                    </h3>
+                    <p>
+                        You can attach multiple methods to the scope object inside a controller, which can be used as an event handler or for other purposes.
+                        <p>The following example demonstrates handling click event of a button.</p>
+                    </p>
+                    <label>Example</label>
+
+                    Enter message :<input type="text" ng-model="message" /><br />
+                    <button ng-click="showMsg(message)"> Show Message</button>
+
+                    <hr />
+                    <div id="div2">
+                        <div class="col-md-12">
+                            <h3>
+                                This div2 inside mycontroller
+                            </h3>
+                            <p>
+                                the properties and methods attached to the scope object inside a particular controller is only available to the HTML elements and its child elements where ng-controller directive is applied.
+                            </p>
+                            <label>Example</label>
+                            Message={{message}}
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="div3">
+                <div class="col-md-12">
+                    <h3>
+                        This div is into mycontroller2 it is another controller.
+                    </h3>
+                    <p>
+                        now you show the same message property from different controller
+                    </p>
+                    <label>Example</label>
+                    <div ng-controller="myController2">
+                        Message = {{message}}
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            
+            <div id="div4">
+                <div class="col-md-12">
+                    <h3>
+                        Attach complex object
+                    </h3>
+                    <p>
+                        You can also attach an object to the $scope inside controller and display value of its properties in HTML.
+                    </p>
+                    <label>Example</label>
+                    <h4>Student Information</h4>
+                    <div ng-controller="myController3">
+                        First Name = {{student.firstname}}<br/>
+                        Last Name={{student.lastname}}
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            
+            <div id="div5">
+                <div class="col-md-12">
+                    <h3>
+                        Nested Controller
+                    </h3>
+                    <p>
+                        As you can see in the below example, a child controller can access properties and methods attached in parent controller function, whereas parent controller cannot access properties and methods attached in child controller.
+                    </p>
+                    <label>Example</label>
+                    
+                    <div ng-controller="parentController">
+                        <h4>Inside Parent Controller</h4>
+                        Message : {{message1}}<br/>
+
+                        <div ng-controller="childController">
+                            <h4>Inside child Controller</h4>
+                            
+                            Parent Message : {{message1}}<br/>
+                            Child Message : {{message2}}<br/>
+                        </div>
+                        This outside child controller but inside parent controller, Child Message : {{message2}}<br/>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            
+            <div id="div5">
+                <div class="col-md-12">
+                    <h3>
+                       Minification Syntax
+                    </h3>
+                    <p>
+                        The minification process shortens parameter and function names. As mentioned before, AngularJS controller function may include $scope or other parameters. If minification process changes the parameter names then AngularJS application will break because Angular framework needs the same parameter name for built-in objects such as $scope. Use the following syntax so that minification will not change the parameter name.
+                    </p>
+                    <label>Example</label>
+                    <h4>Student Information</h4>
+                    <div ng-controller="myController4">
+                        {{message5}}
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        var ngApp = angular.module('myNgApp', []);
+
+        ngApp.controller('myController',function($scope) {
+                $scope.message = "Hello world";
+
+                $scope.showMsg = function(msg) {
+                    alert(msg);
+                }
+            });
+
+        ngApp.controller('myController2',function($scope) {
+                $scope.message = "This is myController2";
+            });
+
+        ngApp.controller('myController3',function($scope) {
+                $scope.student = { firstname: 'Ajit', lastname: 'Pawar' };
+            });
+
+        ngApp.controller('parentController', function($scope) {
+                $scope.message1 = "This is Parent Controller";
+            });
+
+        ngApp.controller('childController', function($scope) {
+            $scope.message2 = "This is Child Controller";
+        });
+
+        ngApp.controller('myController4',['$scope', function($scope) {
+                $scope.message5 = "Hello World!";
+            }
+        ]);
+    </script>
+
+}

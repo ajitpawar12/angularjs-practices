@@ -18,6 +18,11 @@ namespace AngularJsDemo.Controllers
             return View();
         }
 
+        public ActionResult Controller()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
